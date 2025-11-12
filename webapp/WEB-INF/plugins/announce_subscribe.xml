@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?><plug-in>
-    <name>module.announce.subscribe</name>
+    <name>announce-subscribe</name>
     <class>fr.paris.lutece.portal.service.plugin.PluginDefaultImplementation</class>
     <version>1.0.1-SNAPSHOT</version>
     <documentation/>
     <installation/>
     <changes/>
     <user-guide/>
-    <description>moduleannouncesubscribe.plugin.description</description>
-    <provider>moduleannouncesubscribe.plugin.provider</provider>
+    <description>module.announce.subscribe.plugin.description</description>
+    <provider>module.announce.subscribe.plugin.provider</provider>
     <provider-url>http://www.announce.mdp</provider-url>
     <icon-url>images/admin/skin/feature_default_icon.png</icon-url>
     <copyright>2019</copyright>
