@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body style="margin:0; padding:0; width:100% !important; background:#f8f8f8; font-family:'Avenir Next','Helvetica Neue',Helvetica,Arial,sans-serif; line-height:1.65;">
+    <table width="100%" cellpadding="0" cellspacing="0" style="background:#f8f8f8;">
+        <tr>
+            <td align="center" style="padding:20px 0;">
+                <table width="580" cellpadding="0" cellspacing="0" style="max-width:580px; width:100%;">
+                    <!-- Header -->
+                    <tr>
+                        <td align="center" style="padding:40px 0; background:#007bff; color:#ffffff;">
+                            <h1 style="margin:0; font-size:24px; text-transform:uppercase; color:#ffffff;">
+                                #i18n{module.announce.subscribe.email.subscription.header}
+                            </h1>
+                        </td>
+                    </tr>
+                    <!-- Content -->
+                    <tr>
+                        <td style="background:#ffffff; padding:30px 35px;">
+                            <p style="font-size:16px; margin-bottom:20px;">
+                                #i18n{module.announce.subscribe.email.subscription.greeting}
+                            </p>
+                            <p style="font-size:16px; margin-bottom:20px;">
+                                #i18n{module.announce.subscribe.email.subscription.intro}
+                            </p>
+                            <#list announces_list as item>
+                            <!-- Announce card -->
+                            <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #dee2e6; border-radius:4px; margin-bottom:20px;">
+                                <tr>
+                                    <td style="padding:15px; border-bottom:2px solid #007bff;">
+                                        <a href="${prod_url}${item.announce.id}" style="color:#007bff; font-size:18px; font-weight:bold; text-decoration:none;">
+                                            ${item.announce.title!}
+                                        </a>
+                                        <br />
+                                        <span style="font-size:13px; color:#888;">
+                                            #i18n{module.announce.subscribe.email.subscription.categoryLabel} : ${item.category.label!}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <#if item.announce.hasPictures && item.announce.listIdImageResponse??>
+                                    <#list item.announce.listIdImageResponse as idImageResponse>
+                                        <#if idImageResponse_index == 0>
+                                            <tr>
+                                                <td align="center" style="padding:15px;">
+                                                    <a href="${prod_url}${item.announce.id}" style="text-decoration:none;">
+                                                        <img src="${base_url!}image?resource_type=announce_img&amp;id=${idImageResponse}" alt="${item.announce.title!}" style="max-width:100%; height:auto; border-radius:4px;" />
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </#if>
+                                    </#list>
+                                </#if>
+                                <tr>
+                                    <td style="padding:15px; font-size:15px; color:#333;">
+                                        ${item.announce.description!}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" style="padding:15px;">
+                                        <a href="${prod_url}${item.announce.id}" style="display:inline-block; padding:10px 20px; background:#007bff; color:#ffffff; text-decoration:none; border-radius:4px; font-weight:bold;">
+                                            #i18n{module.announce.subscribe.email.subscription.viewAnnounce}
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                            </#list>
+                            <p style="font-size:14px; color:#888; margin-bottom:0;">
+                                #i18n{module.announce.subscribe.email.subscription.manageSubscriptions}
+                                <a href="${url_subscription!}" style="color:#007bff;">#i18n{module.announce.subscribe.email.subscription.mySubscriptions}</a>.
+                            </p>
+                        </td>
+                    </tr>
+                    <!-- Footer -->
+                    <tr>
+                        <td align="center" style="padding:20px; font-size:13px; color:#888;">
+                            <a href="https://fr.lutece.paris.fr" style="color:#888; text-decoration:none; font-weight:bold;">Lutece</a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

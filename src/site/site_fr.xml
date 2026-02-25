@@ -4,22 +4,16 @@
         <links>
             <item name="EN" href="../index.html" />
         </links>
-        
-        <menu name="Plugin moduleannouncesubscribe">
+
+        <menu name="Module announce-subscribe">
             <item name="Accueil" href="index.html"/>
         </menu>
-        
+
         <menu name="Téléchargements" inherit="bottom" >
-            <item name="Versions stables" href="../../../stable_builds/plugins/plugin-moduleannouncesubscribe/"/>
-            <item name="Nightly builds" href="../../../nightly_builds/plugins/plugin-moduleannouncesubscribe/" />
+            <item name="Versions stables" href="../../../stable_builds/plugins/module-announce-subscribe/"/>
+            <item name="Nightly builds" href="../../../nightly_builds/plugins/module-announce-subscribe/" />
         </menu>
 
-    <!--
-        <menu name="Other links">
-            <item name="" href="" target="_blank"/>
-        </menu>	    
-    -->
-        
         <menu ref="reports" />
     </body>
 </project>

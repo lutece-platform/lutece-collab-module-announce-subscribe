@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2026, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,36 +31,33 @@
  *
  * License 1.0
  */
-package fr.paris.lutece.plugins.module.announce.subscribe.service;
+package fr.paris.lutece.plugins.announce.modules.subscribe.business;
 
-import fr.paris.lutece.plugins.subscribe.service.SubscribePlugin;
-import fr.paris.lutece.portal.service.plugin.Plugin;
-import fr.paris.lutece.portal.service.plugin.PluginDefaultImplementation;
-import fr.paris.lutece.portal.service.plugin.PluginService;
+import fr.paris.lutece.plugins.subscribe.business.Subscription;
 
-
-/**
- * Plugin subscribe implementation
- */
-public class AnnounceSubscribePlugin extends PluginDefaultImplementation
+public class AnnounceSubscriptionDTO extends Subscription
 {
-    private static final String PLUGIN_NAME = "module.announce.subscribe";
 
-    private static volatile Plugin _plugin;
+    String _strEmailSubscribes;
 
-    /**
-     * Get the subscribe plugin
-     * @return The subscribe plugin
-     */
-    public static Plugin getPlugin( )
+    public AnnounceSubscriptionDTO( )
     {
-        if ( _plugin == null )
-        {
-            synchronized ( AnnounceSubscribePlugin.class )
-            {
-                _plugin = PluginService.getPlugin( PLUGIN_NAME );
-            }
-        }
-        return _plugin;
     }
+
+    public AnnounceSubscriptionDTO( String _strEmailSubscribes )
+    {
+        super( );
+        this._strEmailSubscribes = _strEmailSubscribes;
+    }
+
+    public String getEmailSubscribes( )
+    {
+        return _strEmailSubscribes;
+    }
+
+    public void setEmailSubscribes( String _strEmailSubscribes )
+    {
+        this._strEmailSubscribes = _strEmailSubscribes;
+    }
+
 }

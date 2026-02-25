@@ -5,5 +5,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd" >
 
 
-    <bean id="subscribe.announceSubscriptionDAO" class="fr.paris.lutece.plugins.module.announce.subscribe.business.AnnounceSubscribtionDAO" scope="singleton" />
+    <bean id="subscribe.announceSubscriptionDAO" class="fr.paris.lutece.plugins.announce.modules.subscribe.business.AnnounceSubscriptionDAO" scope="singleton" />
+
+    <bean id="announce.announceSubscriptionProvider"
+        class="fr.paris.lutece.plugins.announce.modules.subscribe.service.AnnounceSubscriptionProvider" />
 </beans>

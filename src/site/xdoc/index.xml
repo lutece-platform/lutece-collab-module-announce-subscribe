@@ -1,25 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document>
     <properties>
-        <title>Plugin moduleannouncesubscribe</title>
+        <title>Module announce-subscribe</title>
     </properties>
     <body>
-        <section name="Plugin moduleannouncesubscribe">
-            <!--
-            <p>
-                <img src="images/moduleannouncesubscribe.png" />
-            </p>
-            -->
+        <section name="Module announce-subscribe">
             <subsection name="Introduction">
-                <p></p>
+                <p>
+                    This module extends <b>plugin-announce</b> and <b>plugin-subscribe</b> to allow
+                    front-office users to subscribe to announcements. Users can subscribe to:
+                </p>
+                <ul>
+                    <li>A specific user (receive notifications when that user publishes an announce)</li>
+                    <li>A category (receive notifications for all announces in the category)</li>
+                    <li>A search filter (receive notifications for announces matching custom criteria)</li>
+                </ul>
+                <p>
+                    A daemon periodically checks for new announcements and sends email notifications
+                    to subscribers whose subscriptions match the published content.
+                </p>
             </subsection>
             <subsection name="Configuration">
-                <p></p>
+                <p>
+                    The module requires the following plugins to be installed and active:
+                </p>
+                <ul>
+                    <li><b>plugin-subscribe</b> (subscription management)</li>
+                    <li><b>plugin-announce</b> (announcement management)</li>
+                </ul>
+                <p>
+                    Configure the following properties in <code>announce_subscribe.properties</code>:
+                </p>
+                <ul>
+                    <li><code>announce.subscription.notificationSubject</code> - Email subject for notifications</li>
+                    <li><code>announce.subscription.notification.maxAnnouncesPerEmail</code> - Maximum number of announces
+                        per notification email. Notifications are grouped by subscriber: each user receives a single email
+                        containing all matching announces. When the number exceeds this limit, announces are split into
+                        multiple emails. Accepted values: <b>1 to 20</b> (default: <b>10</b>).</li>
+                </ul>
+                <p>
+                    <b>Important:</b> The following Lutece core properties must be properly configured
+                    for email notifications to work:
+                </p>
+                <ul>
+                    <li><code>lutece.prod.url</code> - <b>Mandatory.</b> The production base URL of the portal
+                        (e.g. <code>https://myportal.example.com</code>). If this property is not set,
+                        all links in notification emails will be broken.</li>
+                    <li><code>mail.server</code> - SMTP server address for sending emails</li>
+                    <li><code>mail.noreply.email</code> - No-reply sender email address used for notification emails</li>
+                </ul>
             </subsection>
             <subsection name="Usage">
-                <p></p>
+                <p>
+                    The module provides an XPage application accessible at <code>?page=announce-subscribe</code>
+                    with the following actions:
+                </p>
+                <ul>
+                    <li><code>doCreateUserSubscription</code> - Subscribe to a user</li>
+                    <li><code>doCreateCategorySubscription</code> - Subscribe to a category</li>
+                    <li><code>doCreateSubscriptionFilter</code> - Subscribe to a search filter</li>
+                </ul>
+                <p>
+                    Users can manage their subscriptions via the subscription management page provided
+                    by plugin-subscribe.
+                </p>
             </subsection>
         </section>
     </body>
 </document>
-

@@ -1,25 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document>
     <properties>
-        <title>Plugin moduleannouncesubscribe</title>
+        <title>Module announce-subscribe</title>
     </properties>
     <body>
-        <section name="Plugin moduleannouncesubscribe">
-            <!--
-            <p>
-                <img src="images/moduleannouncesubscribe.png" />
-            </p>
-            -->
+        <section name="Module announce-subscribe">
             <subsection name="Introduction">
-                <p></p>
+                <p>
+                    Ce module étend <b>plugin-announce</b> et <b>plugin-subscribe</b> pour permettre
+                    aux utilisateurs du front-office de s'abonner aux annonces. Les utilisateurs peuvent s'abonner à :
+                </p>
+                <ul>
+                    <li>Un utilisateur spécifique (notifications lorsque cet utilisateur publie une annonce)</li>
+                    <li>Une catégorie (notifications pour toutes les annonces de la catégorie)</li>
+                    <li>Un filtre de recherche (notifications pour les annonces correspondant à des critères personnalisés)</li>
+                </ul>
+                <p>
+                    Un daemon vérifie périodiquement les nouvelles annonces et envoie des notifications
+                    par email aux abonnés dont les abonnements correspondent au contenu publié.
+                </p>
             </subsection>
             <subsection name="Configuration">
-                <p></p>
+                <p>
+                    Le module nécessite l'installation et l'activation des plugins suivants :
+                </p>
+                <ul>
+                    <li><b>plugin-subscribe</b> (gestion des abonnements)</li>
+                    <li><b>plugin-announce</b> (gestion des annonces)</li>
+                </ul>
+                <p>
+                    Configurez les propriétés suivantes dans <code>announce_subscribe.properties</code> :
+                </p>
+                <ul>
+                    <li><code>announce.subscription.notificationSubject</code> - Objet de l'email de notification</li>
+                    <li><code>announce.subscription.notification.maxAnnouncesPerEmail</code> - Nombre maximum d'annonces
+                        par email de notification. Les notifications sont regroupées par abonné : chaque utilisateur reçoit
+                        un seul email contenant toutes les annonces correspondant à ses abonnements. Lorsque le nombre
+                        dépasse cette limite, les annonces sont réparties dans plusieurs emails.
+                        Valeurs acceptées : <b>1 à 20</b> (défaut : <b>10</b>).</li>
+                </ul>
+                <p>
+                    <b>Important :</b> Les propriétés suivantes du core Lutece doivent être correctement
+                    configurées pour que les notifications par email fonctionnent :
+                </p>
+                <ul>
+                    <li><code>lutece.prod.url</code> - <b>Obligatoire.</b> L'URL de base de production du portail
+                        (ex. <code>https://monportail.example.com</code>). Si cette propriété n'est pas définie,
+                        tous les liens dans les emails de notification seront cassés.</li>
+                    <li><code>mail.server</code> - Adresse du serveur SMTP pour l'envoi des emails</li>
+                    <li><code>mail.noreply.email</code> - Adresse email d'expéditeur no-reply utilisée pour les notifications</li>
+                </ul>
             </subsection>
             <subsection name="Usage">
-                <p></p>
+                <p>
+                    Le module fournit une application XPage accessible via <code>?page=announce-subscribe</code>
+                    avec les actions suivantes :
+                </p>
+                <ul>
+                    <li><code>doCreateUserSubscription</code> - S'abonner à un utilisateur</li>
+                    <li><code>doCreateCategorySubscription</code> - S'abonner à une catégorie</li>
+                    <li><code>doCreateSubscriptionFilter</code> - S'abonner à un filtre de recherche</li>
+                </ul>
+                <p>
+                    Les utilisateurs peuvent gérer leurs abonnements via la page de gestion des
+                    abonnements fournie par plugin-subscribe.
+                </p>
             </subsection>
         </section>
     </body>
 </document>
-
